@@ -25,3 +25,21 @@
 (sum_deeply lst)
 
 (print sum)
+
+; Otra opción:
+#|
+(defun suma (lst)
+    (setq ato (car lst))
+    (cond
+        ((null lst))
+        ((atom ato)
+            (cond
+                ((numberp ato)(incf sumn))
+                (t nil)
+                (suma (cdr lst))
+            )
+            (t (suma ato) (suma (cdr lst)))
+        )
+    )
+)
+|#

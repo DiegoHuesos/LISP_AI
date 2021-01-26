@@ -466,3 +466,39 @@
 ;>5
 (length '(1 2 (a b) 3 4 ))
 ;>5
+
+
+;member[obj, lst] --> Determina si un elemento (obj) es miembro de una lista. 
+;Regresa la lista a partir de donde se encuentra el elemento
+(member 2 '(1 2 3 4 5))
+;>(2 3 4 5)
+
+(member 'a '(b c d))
+;>nil
+
+
+
+;nthcdr[n, lst] --> regresa el cdr de lst a partir de n, sin incluir n
+(nthcdr 2 '(1 2 3 4 5))
+;> (3 4 5)
+
+(nthcdr 5 '(a b 9 c d))
+;> nil
+
+(nthcdr 2 '(a b c d e))
+;> (c d e)
+
+(nthcdr 0 '(a b c 7 y))
+;> (a b c 7 y)
+
+
+;nth[n, lst] --> Regresa el car de nthcdr
+(nth 2 '(a b c d e))
+;> c
+
+(nthcdr 5 '(a b 9 c d))
+;> nil
+
+(nthcdr 0 '(a b c 7 y))
+;> a
+
