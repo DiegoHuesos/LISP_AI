@@ -502,3 +502,172 @@
 (nthcdr 0 '(a b c 7 y))
 ;> a
 
+
+;Estructuras de control 
+;Permiten controlar de forma explícita la evaluación 
+;de las formas en la definición de funciones.
+;cond[cond1, cond2,... , condn]
+;*una función lambda es una función oculta
+
+(setq num 3)
+(setq sign (cond
+        ((plusp num) 'positivo)
+        ((minusp num) 'negativo)
+        (t 'nulo)
+    )
+)
+
+(setq p 6 res(cond
+    ((> p 0.75) 'improbable)
+    ((> p 0.50) 'probable)
+    ((> p 0.20) 'poco_probable)
+    (t 'improbable)
+))
+
+
+;Tipos de pensamiento lógico:
+;   Deductivo --> 
+;   Inductivo --> 
+;   Adbuctivo --> 
+;   Retroductivo --> 
+
+;Sistema experto: conjunto de reglas grandes de conocimento particular
+
+
+;if (tiene cuerpo)
+;(if <prueba> <forma da evaluar si es true>
+;            <forma a evaluar si prueba es false>
+;)
+(setq dia 'lunes)
+(if (symbolp día) 'dia 'fecha)
+;>dia
+
+(setq p 6)
+(if (numberp p) (write 'hola) (write 'adiós))
+;>hola
+
+(defun prueba (obj)
+    (if (atom obj) (write 'atomo) (write 'lista))
+    (write 'sigue_codigo)
+)
+;> (prueba 3)
+;> atomo
+;> sigue_codigo
+
+
+;when : es como el if pero no tiene else
+;(when <prueba> <forma a evaluar si prueba es true>)
+(setq alta 90 temp 100)
+(when (> temp alta) (setq alta temp))
+
+(defun prueba (num)
+    (when (> 10 num) (write 'hola))
+    (write 'sigue_codigo)
+)
+
+
+;Funciones recursivas con if y when
+
+;Potencia
+;m^n 
+;   m x m^n-1    si   n>0
+;   1            si   n=0
+
+
+(defun potencia (m n)
+    (if (= n 0) 1
+        (* m (potencia m (decf n)) ) 
+    )  
+)
+
+(defun potencia (m n)
+    (cond 
+        ((eq n 0) 1)
+        (t (* m (potencia m (decf n)) ) )
+    )  
+)
+
+;Fibonacci
+(defun fibonacci (n)
+    (if (or (= n 1 ) (= n 0)) 
+        1
+        (+ (fibonacci (- n 1)) (fibonacci (- n 2)) )
+    )
+)
+
+(defun fibonacci (n)
+    (cond 
+        ((= n 0) 0)
+        ((= n 1) 1) 
+        (t (+ (fibonacci (- n 1)) (fibonacci (- n 2)) ))
+    )
+)
+
+
+;Funciones let, apply, funcall, mapcar
+
+;let --> permite crear variables locales
+#|
+(let (
+        (var1 value-1)
+        (var2 value-2)
+    )
+    body
+)
+|#
+
+(defun promedio (x y)
+    (let ((sum (+ x y))))
+    (list x y `promedio : )
+)
+
+;Apply --> macro que permite ejecutar funciones
+(apply #'first '((a b c d)))
+
+(apply #'append '((a b) (c d)))
+
+(apply #'+ (2 3 5))
+
+
+;funcall --> macro que permite ejecutar funciones
+(funcall #'first '(a b c d))
+
+(funcall #'append '(a b) '(c d) )
+
+(funcall #'+ 2 3 5 )
+
+
+;mapcar--> macro que facilita la tranformación de la lista.
+;Debemos proporcionar el nombre del procedimiento de transformación
+;junto con la lista de los elementos que serán transformados.
+
+(mapcar #'oddp '(1 8 17 21))
+;> (T NIL T T)
+
+(mapcar #'= '(a b) '(a e) )
+;> (T NIL)
+
+(mapcar #'+ '(1 3 6 9) '(2 3 5 11) )
+;>(3 6 11 20)
+
+
+(defun self-and-double (x)
+    (list x (+ x x))
+)
+
+(mapcar ())
+
+
+(defun tree-reverse (tree)
+    (print tree)
+    (if (listp tree)
+        (mapcar #'tree-reverse (reverse tree))
+        tree
+    )
+)
+
+(setq lst '(1 2 3 ((4) (a b) c) (5 6 7)8 )  ) 
+
+(tree-reverse lst)
+
+;> (8 (7 6 5) (C (B A) (4)) 3 2 1)
