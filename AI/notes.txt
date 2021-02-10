@@ -1,0 +1,129 @@
+Resolución de problemas 
+
+RP es fundamental en la mayoría de las aplicaciones de IA. 
+Tal es así que se considera como una herramienta de IA.
+
+Los problemas se pueden clasificar en dos tipos:
+    - Aquellos caracterizados por una solución algorítmica. 
+    - Aquellos que requiere de una búsqueda para su solución. (IA se preocupa por problemas de este tipo)
+
+
+
+
+Técnica a utilizar para resolver problemas --> Métodos de búsqueda
+
+En RP se utilizan puzzles y juegos porque proporcionan una rica fuente 
+de ejemplos para probar distintos métodos de búsqueda.
+
+Puzzle-8
+Estado inicial --> Estado Final
+    3 2 1           1 2 3
+    4 5 6           8   4
+      8 7           7 6 5
+
+En carros autónomos, suelen utilizar a los árboles como punto de referencia porque 
+los árboles duran muchos años. 
+
+
+Problema agente viajero 
+
+Ciudades    Trayectoria     Nodos/Seg       Tiempo
+    7          5,040           
+    15        1.30E10
+    40        8.15E47       1,000,000       2.58E32 siglos 
+                            10,000,000      2.58E31 siglos 
+
+
+En ajedrez tienes
+37 alternativas en promedio en cada movimiento 
+218 alternativas como máximo
+
+En Go (tablero de 19x19):
+10 E 121 --> 1,021 siglos generando cada alternativa
+
+
+
+Aplha-Beta pruning
+MegaMax
+DeepLearning
+
+* Una solución al problema es una secuencia apropiada de movimientos.
+    - Existe un estado inicial y un estado final defninidos. 
+    - Hay un conjunto de movimientos que permiten cambiar de una configuración a otra. 
+
+* Un operador transforma un estado en otro estado.
+    - Mover izquierda
+    - Mover arriba
+    - Mover derecha 
+    - Mover abajo 
+
+* Existen operadores prohibidos (restricciones):
+    - Si estamos en la ultima fila, no se puede mover hacia abajao
+    - Si estamoes en la primera fial, no nse puede mover hacia arriba
+
+En lenguaje de estados y operadores una solución al problema consiste
+en una secuencia de operadores que transforma el estado inicial en estado final. 
+
+El problema se puede representar como:
+    - Espacio/Estado
+    - Reducción de problemas
+
+
+
+Áreas de aplicación de inteligencia artifical:
+    1.- Medicina
+    2.- Milicia
+
+
+MÉTODOS DE BÚSQUEDA ESPACIO/ESTADO
+- Se
+- Un nodo inicial se asocia con la descripción un estado inicial.
+- Los sucesores de un nodo se calculan usando los operadores que son aplicables a la descripción
+de ese estado. El proceso se llama EXPANDER UN NODO. 
+- APUNTADORES --> se utilizan para relacionar el nodo padre con el hijo. Cuando se encuentra el 
+estado meta, podemos entonces encontrar la trayectoria. 
+
+   open                     close
+candidatos                candidatos
+
+1211234111                  1 2 3 4
+
+Breadth-first --> se avanza por niveles/ exxploración exahustiva/ se expanden los nodos en el orden que fueron creados.
+
+Depth-first --> se explora una rama a profundidad / se expande el nodo más recientemente generado.
+
+
+
+Breadth-first:
+1.- Poner el nodo inicial en una lista llamada abierto.
+2.- Si abierto está vacía, entonces el métidi termina con fracaso, de otr forma, continúa.
+3.- Quitar el primer elemento de abierto y ponerlo en una lista llamada cerrado. 
+4.- Expander N obteniendo todos sus sucesores que se colocará al final de abierto (proporcionar apuntadores para regresar a N). 
+Si no hay sucesores ir a 2.
+5.- Si alguno de los sucesores es el estado meta el método termina con éxito, de otra forma ir a 2. 
+
+
+Todos los métodos heurísticos están basados en búsquedas a breadth-first o deep-first
+
+Hay que pensar en tiempos y recursos 
+
+Puzzle-8
+Estado inicial --> Estado Final
+    2   3           1 2 3
+    1 8 4           8   4
+    7 6 5           7 6 5
+
+Operadores: 
+<-  ^  -->  v  mov.horario
+
+
+Depth-first: Método
+1. Poner el nodo inicial en una lista llamada abierto.
+2. Si abierto está vacía entonces el método termina con fracaso, de otra forma, continúa. 
+3. Quitar el primer elemento de abierto y ponerlo en una lista llamada cerrado. Llamar a este nodo N. 
+4. Si la profundidad de N es igual a la permitida ir a 2, de otra forma, continúa.
+5. Expander N obtenido todos sus sucesores, que se colocarán al inicio de abierto (proporcionar apuntadores para regresar N). Si no hay sucesores ir a 2.
+6. Si alguno de los sucesores es el estado meta, el método termina con éxito, de otra forma, ir a 2. 
+
+
+
