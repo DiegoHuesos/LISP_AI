@@ -1,4 +1,4 @@
-;2.d) Sume los números de una lista a profunidad:
+;2.d) Sume los números de una lista a profundidad:
 (setq sum 0)
 
 (defun sum_deeply (lst)

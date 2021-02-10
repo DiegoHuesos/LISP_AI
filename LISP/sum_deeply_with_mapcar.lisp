@@ -1,5 +1,5 @@
 ;b) Sumar los elementos numéricos de una lista a profundidad utilizando la función mapcar.
-;cairo@itam.mx
+
 (setq sum 0)
 
 (defun sum_deeply_mapcar (tree)
