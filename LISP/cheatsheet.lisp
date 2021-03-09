@@ -50,8 +50,8 @@
             (progn
                 (print 'atomo_y_)
                 (cond
-                    ((numberp param) (print 'numero)))
-                    (t (print 'simbolo)
+                    ((numberp param) (print 'numero))
+                    (t (print 'simbolo) )
                 )
             )
         )
