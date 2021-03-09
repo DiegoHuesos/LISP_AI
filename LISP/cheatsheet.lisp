@@ -129,7 +129,7 @@
 
 (not t)
 (not nil)
-(not (atom '(1 2 3))
+(not (atom '(1 2 3)))
 
 (and t t nil)
 
