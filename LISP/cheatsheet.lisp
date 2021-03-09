@@ -32,7 +32,7 @@
 
 (defun mayor_5 (numero)
     (cond 
-        ( (> numero 5) (print 'mayor a 5))
+        ( (> numero 5) (print 'mayor_a_5))
         (t (print 'false))
     )
 )
