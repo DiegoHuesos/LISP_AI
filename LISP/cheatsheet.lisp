@@ -237,9 +237,9 @@
         (t (cond 
                 ((numberp (car lst))
                     (incf sum (car lst))
-                    (suma_lista (cdr lst))
+                    (sum_list_aux (cdr lst))
                 )
-                (t (suma_lista (cdr lst)) )
+                (t (sum_list_aux (cdr lst)) )
             )
         )
     )   
